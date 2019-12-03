@@ -25,12 +25,8 @@ public class Product {
         this.price = price;
     }
 
-    public void increasePrice(double price) {
+    public void changePrice(double price) {
         this.price += price;
-    }
-
-    public void decreasePrice(double price) {
-        this.price -= price;
     }
 
     public int getQuantity() {
@@ -41,11 +37,7 @@ public class Product {
         this.quantity = quantity;
     }
 
-    public void increaseQuantity(int quantity) {
+    public void changeQuantity(int quantity) {
         this.quantity += quantity;
-    }
-
-    public void decreaseQuantity(int quantity) {
-        this.quantity -= quantity;
     }
 }

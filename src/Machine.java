@@ -20,11 +20,32 @@ public class Machine {
         this.products.add(new Product("Paluszki", 2.69, 10));
         this.products.add(new Product("Precelki", 2.69, 10));
         this.products.add(new Product("Slonecznik", 2.49, 10));
+    }
 
+    double getClientFunds() {
+        return clientFunds;
+    }
+
+    void addCLientFunds(double money){
+        this.clientFunds+=money;
+    }
+
+    void returnClientFunds(){
+        Log.info("Zwrocono "+clientFunds+" PLN.");
+        clientFunds=0.0;
+    }
+
+    public ArrayList<Product> getProducts() {
+        return products;
+    }
+
+    public boolean checkIfCanBuy(Product product){
+        if(product.getQuantity()>1&&clientFunds-product.getPrice()>=0) return true;
+        else return false;
     }
 
     void work(){
-        Menu menu = new Menu();
+        Menu menu = new Menu(this);
         menu.start();
     }
 
