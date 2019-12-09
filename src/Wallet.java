@@ -1,7 +1,12 @@
-public class Wallet {
+class Wallet {
     private double value;
 
-    public Wallet(double value){
+    Wallet(double value){
         this.value=value;
     }
+
+    void addCash(double money){
+        this.value+=money;
+    }
+
 }
