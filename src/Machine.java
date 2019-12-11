@@ -10,19 +10,19 @@ class Machine {
     Machine(){
         this.wallet = new Wallet(100.0);
         this.clientFunds=0.0;
-        this.products.add(new Product("Coca-Cola", 4.99, 10));
-        this.products.add(new Product("Pepsi", 3.99, 10));
-        this.products.add(new Product("Woda", 1.36, 20));
-        this.products.add(new Product("M&Ms", 7.98, 10));
-        this.products.add(new Product("Snickers", 2.99, 10));
-        this.products.add(new Product("Bounty", 2.99, 10));
-        this.products.add(new Product("Mars", 3.49, 10));
-        this.products.add(new Product("Twix", 3.99, 10));
-        this.products.add(new Product("Lion", 4.99, 10));
-        this.products.add(new Product("Lays", 6.99, 5));
-        this.products.add(new Product("Paluszki", 2.69, 10));
-        this.products.add(new Product("Precelki", 2.69, 10));
-        this.products.add(new Product("Slonecznik", 2.49, 10));
+        this.products.add(new Drink("Coca-Cola", 4.99, 10, 250));
+        this.products.add(new Drink("Pepsi", 3.99, 10, 330));
+        this.products.add(new Drink("Woda", 1.36, 20, 500));
+        this.products.add(new Food("M&Ms", 7.98, 10, 45));
+        this.products.add(new Food("Snickers", 2.99, 10, 50));
+        this.products.add(new Food("Bounty", 2.99, 10, 57));
+        this.products.add(new Food("Mars", 3.49, 10, 51));
+        this.products.add(new Food("Twix", 3.99, 10, 50));
+        this.products.add(new Food("Lion", 4.99, 10, 42));
+        this.products.add(new Food("Lays", 6.99, 5, 140));
+        this.products.add(new Food("Paluszki", 2.69, 10, 150));
+        this.products.add(new Food("Precelki", 2.69, 10, 130));
+        this.products.add(new Food("Slonecznik", 2.49, 10, 200));
     }
 
     double getClientFunds() {
@@ -40,7 +40,7 @@ class Machine {
     }
 
     private void giveChange(double cost){
-        clientFunds-=cost;
+        clientFunds=Math.round((clientFunds-cost)*100.0)/100.0;
         int id=coins.size()-1;
         System.out.print("Wydano reszte: ");
         while(clientFunds>=0.01) {
@@ -69,7 +69,8 @@ class Machine {
     void printProducts(){
         int number=1;
         for(Product product : products){
-         Log.info(number++ +". "+product.getName()+" "+product.getPrice()+"PLN Dostepnosc: "+product.getQuantity()+" sztuk");
+            if(product instanceof Drink) Log.info(number++ +". "+product.getName()+" "+product.getPrice()+"PLN Wielkosc: "+product.getSize()+"ml Dostepnosc: "+product.getQuantity()+" sztuk");
+            else Log.info(number++ +". "+product.getName()+" "+product.getPrice()+"PLN Wielkosc: "+product.getSize()+"g Dostepnosc: "+product.getQuantity()+" sztuk");
         }
     }
 

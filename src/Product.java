@@ -1,43 +1,44 @@
-public class Product {
+abstract class Product {
     private String name;
     private double price;
     private int quantity;
 
-    public Product(String name, double price, int quantity){
+    Product(String name, double price, int quantity){
         this.name=name;
         this.price=price;
         this.quantity=quantity;
     }
 
-    public String getName() {
+    String getName() {
         return name;
     }
 
-    public void setName(String name) {
+    void setName(String name) {
         this.name = name;
     }
 
-    public double getPrice() {
+    double getPrice() {
         return price;
     }
 
-    public void setPrice(double price) {
+    void setPrice(double price) {
         this.price = price;
     }
 
-    public void changePrice(double price) {
+    void changePrice(double price) {
         this.price += price;
     }
 
-    public int getQuantity() {
+    int getQuantity() {
         return quantity;
     }
 
-    public void setQuantity(int quantity) {
+    void setQuantity(int quantity) {
         this.quantity = quantity;
     }
 
-    public void changeQuantity(int quantity) {
+    void changeQuantity(int quantity) {
         this.quantity += quantity;
     }
+    abstract int getSize();
 }
